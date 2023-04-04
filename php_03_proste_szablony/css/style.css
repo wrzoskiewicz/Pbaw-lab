@@ -1,0 +1,34 @@
+.splash-container {
+	background: #040 url("../img/pixel.jpg") no-repeat center top;
+	background-size: 100% 100%;
+	height: 100%;
+}
+
+.splash-head {
+	border-color: #FFD700;
+}
+
+.content-wrapper {
+	top: 80%;
+}
+
+.err {
+	padding: 1em 1em 1em 3em;
+	border-radius: 1em;
+	background-color: #ff8;
+	color: #322;
+}
+
+.inf {
+	padding: 2em 1em 1em 3em;
+	border-radius: 1em;
+	background-color: #8f8;
+	color: #222;
+}
+
+.res {
+	padding: 1em 1em 1em 1.5em;
+	border-radius: 1em;
+	background-color: #ff0;
+	color: #222;
+}
