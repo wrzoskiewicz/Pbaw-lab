@@ -1,0 +1,70 @@
+{extends file=$conf->root_path|cat:"/app/views/templates/main.html"}
+
+{block name=footer}przykładowa tresć stopki wpisana do szablonu głównego z szablonu kalkulatora{/block}
+
+{block name=content}
+
+<div class="pure-menu pure-menu-horizontal bottom-margin">
+	<a href="{$conf->action_url}logout"  class="pure-menu-heading pure-menu-link">Wyloguj</a>
+	<p> Użytkownik: {$user->login} </p>
+	<p> Rola: {$user->role} <p/>
+</div>
+
+<h2 class="content-head is-center">Kalkulator Kredytowy</h2>
+
+<div class="pure-g">
+<div class="l-box-lrg pure-u-1 pure-u-med-2-5">
+	<form class="pure-form pure-form-stacked" action="{$conf->action_url}calcCompute" method="post">
+		<fieldset>
+
+			<label for="kw">kwota kredytu</label>
+			<input id="kw" type="text" placeholder="wartość kw" name="kw" value="{$form->kw}">
+
+			<label for="pr">procent</label>
+			<input id="pr" type="text" placeholder="wartość pr" name="pr" value="{$form->pr}">
+
+			<label for="lt">lata</label>
+			<input id="lt" type="text" placeholder="wartość lt" name="lt" value="{$form->lt}">
+
+			<button type="submit" class="pure-button">Oblicz</button>
+		</fieldset>
+	</form>
+</div>
+
+<div class="l-box-lrg pure-u-1 pure-u-med-3-5">
+
+{* wyświeltenie listy błędów, jeśli istnieją *}
+{if $msgs->isError()}
+	<h4>Wystąpiły błędy: </h4>
+	<ol class="err">
+	{foreach $msgs->getErrors() as $err}
+	{strip}
+		<li>{$err}</li>
+	{/strip}
+	{/foreach}
+	</ol>
+{/if}
+
+{* wyświeltenie listy informacji, jeśli istnieją *}
+{if $msgs->isInfo()}
+	<h4>Informacje: </h4>
+	<ol class="inf">
+	{foreach $msgs->getInfos() as $inf}
+	{strip}
+		<li>{$inf}</li>
+	{/strip}
+	{/foreach}
+	</ol>
+{/if}
+
+{if isset($res->result)}
+	<h4>Wynik</h4>
+	<p class="res">
+	{$res->result}
+	</p>
+{/if}
+
+</div>
+</div>
+
+{/block}
